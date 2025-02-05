@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        /* box-sizing: border-box; */
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    #container1 {
+        max-width: 100vw;
+        height: 70vh;
+        color: white;
+        background-color: black;
+        overflow: hidden;
+        /* border: 2px solid blue; */
+
+    }
+
+    .navbar {
+        max-width: 100%;
+        /* border: 2px solid red; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2%;
+
+    }
+
+    .navbar h3 {
+        font-size: 30px;
+        padding-left: 10%;
+    }
+
+    .bar {
+        display: flex;
+        gap: 50px;
+        padding-right: 10%;
+        flex-wrap: wrap;
+    }
+
+    .bar li {
+        list-style: none;
+    }
+
+    .bar li a {
+        text-decoration: none;
+        color: white;
+        position: relative;
+    }
+
+    .bar li a::after {
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #ff004f;
+        transition: 0.5s;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+
+    }
+
+    .bar li a:hover::after {
+        width: 100%;
+    }
+
+    .name {
+        /* border: 2px solid green; */
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        max-height: 80%;
+        padding-top: 30px;
+    }
+
+    .info {
+        font-size: 40px;
+        /* border: 2px solid red; */
+    }
+
+    .img {
+        width: 300px;
+        height: 350px;
+    }
+
+    .navbar p {
+
+        display: none;
+    }
+
+    .menu {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: none;
+    }
+
+    @media only screen and (max-width:425px) {
+        .bar {
+            flex-direction: column;
+
+            background-color: bisque;
+            width: 30%;
+            height: 63vh;
+            position: absolute;
+            top: 0px;
+            right: -200px;
+            padding: 20px;
+        }
+
+        .navbar p {
+            display: block;
+            padding-right: 30px;
+        }
+
+        .name {
+
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            padding-top: 0%;
+            font-size: 10px;
+            margin-top: 59px;
+        }
+
+        .img {
+            width: 150px;
+            height: 100px;
+        }
+
+        .bar.active {
+
+            right: 0px;
+        }
+    }
+
+    #container2 {
+        height: 70vh;
+        max-width: 100vw;
+        background-color: black;
+        color: white;
+        background-size: cover;
+        /* border: 2px solid green; */
+        /* padding: 100px; */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .main {
+
+        display: flex;
+        flex-direction: column;
+        max-width: 60%;
+        height: 50%;
+
+    }
+
+    .content {
+        width: 30%;
+        height: 40%;
+        border: 2px solid burlywood;
+    }
+
+    .value li {
+        list-style: none;
+    }
+
+    .value li a {
+        position: relative;
+        list-style: none;
+        text-decoration: none;
+        color: white;
+    }
+
+    .about h2 {
+        font-size: 47px;
+        padding-bottom: 20px;
+    }
+
+    .para {
+        font-size: 20px;
+    }
+
+    .value {
+        padding-top: 15px;
+        display: flex;
+
+        gap: 100px;
+    }
+
+    .value li a::after {
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #ff004f;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        transition: 0.5s;
+    }
+
+    .value li a:hover::after {
+        width: 100%;
+    }
+
+    @media only screen and (max-width:425px) {
+        #container2 {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .main {
+            height: 40%;
+        }
+
+        .value {
+            gap: 20px;
+        }
+
+        .about h2 {
+            font-size: 20px;
+        }
+
+        .para p {
+            font-size: 13px;
+        }
+
+        .content {
+            width: 60%;
+        }
+
+        .content p {
+            font-size: 13px;
+        }
+    }
+
+    #container3 {
+        height: 70vh;
+        max-width: 100vw;
+        background-color: black;
+        color: white;
+        background-size: cover;
+        /* border: 2px solid red; */
+        /* padding: 100px; */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .mail a {
+        font-size: 18px;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .phone a {
+        font-size: 18px;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .input {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input input {
+        padding: 5px;
+    }
+
+    .input button {
+        padding: 5px;
+        width: 100px;
+        background-color: red;
+        cursor: pointer;
+        color: white;
+        border-style: none;
+        border-radius: 4px;
+    }
+
+    .outside {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .call h2 {
+        font-size: 40px;
+    }
+
+    .logs {
+        padding: 5px;
+        width: 100px;
+        background-color: red;
+
+        border-style: none;
+        border-radius: 4px;
+    }
+
+    .logs a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .btn:hover {
+        background-color: rgb(226, 129, 17);
+    }
+
+    #container4 {
+
+        height: 70vh;
+        max-width: 100vw;
+        background-color: black;
+        color: white;
+        background-size: cover;
+        /* border: 2px solid red; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* overflow: hidden; */
+        box-sizing: border-box;
+        padding-top: 20px;
+
+
+    }
+
+    .pro {
+        display: flex;
+        padding-top: 20px;
+        gap: 30px;
+        /* border: 2px solid green; */
+        height: 360px;
+
+    }
+
+    .pro1,
+    .pro2,
+    .pro3 {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+    }
+
+    .im {
+        width: 250px;
+        height: 200px;
+    }
+
+    .im:hover {
+        scale: 1.3;
+        transition: all ease-in-out 0.5s;
+    }
+
+    @media only screen and (max-width:425px) {
+        #container4{
+            display: flex;
+            flex-direction:column;
+        }
+        .pro{
+            display: flex;
+            flex-direction: column;
+            border:2px solid wheat;
+            gap:10px;
+            padding-top:20px;
+        }  
+        .pro1,.pro2,.pro3{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap:5px;
+        }
+        .im{
+            width:70px;
+            height:70px;
+        }
+        .im:hover{
+            scale:4;
+        }
+
+        @keyframes slide{
+            0%{transform:translate(-100%); opacity:0;}
+            100%{transform: translate(0); opacity:1;}
+        }
+        .im{
+            animation: slide 1s ease-in-out;
+        }
+        .con{
+            animation:slide 1s ease-in-out
+        }
+    }
+</style>
+
+<body>
+    <section id="container1">
+        <nav class="navbar">
+            <h3>Sudhanshu.</h3>
+            <ul class="bar">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Portfolio</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+            <p class="menu">=</p>
+        </nav>
+        <div class="name">
+            <div class="info">
+                <h5>Hi, I'm</h5>
+                <h4>Sudhanshu kumar</h4>
+                <h5>From India</h5>
+            </div>
+
+            <img class="img" src="sudh.jpg" alt="photo">
+        </div>
+
+    </section>
+    <section id="container2">
+        <div class="main">
+            <div class="about">
+                <h2>About Me</h2>
+            </div>
+            <div class="para">
+                <p>I am currently studying in B.Tech CSE Second year.My expertise include front-end development using
+                    HTML, CSS, JAVASCRIPT and basic knowledge of REACT. </p>
+            </div>
+            <div class="qualification">
+                <ul class="value">
+                    <li class="Skills"><a href="">Skills</a></li>
+                    <li class="Exp"><a href="">Experience</a></li>
+                    <li class="Edu"><a href="">Education</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <p>I have expertise in front-end development, including HTML, CSS, JavaScript, and basic React.</p>
+        </div>
+    </section>
+    <section id="container4">
+        <h2>My Work</h2>
+        <div class="pro">
+
+            <div class="pro1">
+                <img class="im" src="Screenshot (15).png" alt="bulb">
+                <div class="con">
+                    <h4>Switching Bulb</h4>
+                    <p>
+                        when we press the turn on switch bulb glows and when press the turn off switch bulb off.
+                    </p>
+                </div>
+
+            </div>
+            <div class="pro2">
+                <img class="im" src="Screenshot (16).png" alt="guess">
+                <div class="con">
+                    <h4>Guess A Number</h4>
+                    <p>In this project game generates a random number which you have to guess in the 10 chances. If you
+                        guess the number you will win the game.</p>
+                </div>
+            </div>
+            <div class="pro3">
+                <img class="im" src="Screenshot (17).png" alt="calculator">
+                <div class="con">
+                    <h4>Calculator</h4>
+                    <p>In this project you will do some basic arithmetic operations. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="container3">
+        <div class="outside">
+            <div class="call">
+                <h2>Contact Me</h2>
+
+            </div>
+            <div class="mail">
+                <a href="mailto:example@gmail.com">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon" width="20px">
+                    example@gmail.com
+                </a>
+            </div>
+            <div class="phone">
+                <a href="tel:+1234567890">
+                    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone Icon" width="20px">
+                    +1234567890
+                </a>
+            </div>
+            <div class="insta">
+                <a href="https://www.instagram.com/jha_sudhanshu007" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram Logo" width="40px">
+                </a>
+            </div>
+            <button class="logs"><a href="">Download PDF</a></button>
+
+        </div>
+        <div class="input">
+            <input type="text" placeholder="your name">
+            <input type="email" placeholder="your email">
+            <textarea name="message" rows="6" placeholder="your message"></textarea>
+            <button type="submit" class="btn">Submit</button>
+            <!-- <form action="backend.php">
+            </form> -->
+        </div>
+    </section>
+</body>
+<script>
+    const menu = document.querySelector('.menu');
+    const list = document.querySelector('.bar');
+    const Skills = document.querySelector('.Skills');
+    const Exp = document.querySelector('.Exp');
+    const Edu = document.querySelector('.Edu');
+    const content = document.querySelector('.content');
+    menu.addEventListener('click', function (e) {
+        e.preventDefault();
+        list.classList.toggle('active');
+    })
+    Skills.addEventListener('click', function (e) {
+        e.preventDefault();
+        content.innerHTML = "I have expertise in front-end development, including HTML, CSS, JavaScript, and basic React.";
+    })
+    Exp.addEventListener('click', function (e) {
+        e.preventDefault();
+        content.innerHTML = "I am currently gaining experience through projects and hands-on coding. Working on web development using React and JavaScript.";
+    })
+    Edu.addEventListener('click', function (e) {
+        e.preventDefault();
+        content.innerHTML = "I am currently pursuing a B.Tech in Computer Science, Second Year.";
+    })
+</script>
+
+</html>
